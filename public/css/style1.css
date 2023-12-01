@@ -1,0 +1,18 @@
+.loginmargin{
+    margin-top: 100px;
+  }
+  .bodycolor{
+    background-color: rgb(44, 22, 68);
+  }
+  .formcontrol{
+    width: 30px;
+  }
+  .emailmargin{
+    margin-top: 50px;
+  }
+  .margin{
+    margin-top: 30px;
+  }
+  .colorcard{
+    background-image: linear-gradient(to right, rgb(179, 23, 145) , rgb(74, 33, 150));
+  }
