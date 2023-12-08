@@ -1,8 +1,17 @@
 .loginmargin{
     margin-top: 100px;
   }
-  .bodycolor{
-    background-color: rgb(44, 22, 68);
+  .bodycolorregisteration{
+    background-color: rgb(28, 18, 38);
+  }
+  .bodycolortasklist{
+    background-color: rgb(17, 17, 17);
+  }
+  .bodycolorlogin{
+    background-color: rgb(109, 109, 210);
+  }
+  .bodycolordashboard{
+    background-color: rgb(144, 84, 97);
   }
   .formcontrol{
     width: 30px;
@@ -14,5 +23,17 @@
     margin-top: 30px;
   }
   .colorcard{
-    background-image: linear-gradient(to right, rgb(179, 23, 145) , rgb(74, 33, 150));
+    background-image: linear-gradient(to right, rgb(23, 65, 179) , rgb(106, 66, 178));
   }
+  .colorcarddashboard{
+    background-image: linear-gradient(to right, rgb(83, 21, 67) , rgb(110, 17, 24));
+  }
+  .colorcardlogin{
+    background-image: linear-gradient(to right, rgb(224, 218, 223) , rgb(46, 44, 48));
+  }
+.white-link{
+  color: white;
+}
+.black-link{
+  color: rgb(9, 9, 9);
+}

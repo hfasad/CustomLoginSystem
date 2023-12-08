@@ -5,16 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Task;
 use Hash;
 use Session;
 
 class CustomAuthController extends Controller
 {
-    // Your controller code here
-
+    
     public function login(){
-      return view("Auth.Login");
-}
+        // Check if the user is already logged in
+        if (Session::has('login')) {
+            return redirect('dashboard');
+        }
+    
+        return view("Auth.Login");
+    }
+    
 
     public function registeration(){
         return view("Auth.Registeration");
@@ -71,6 +77,59 @@ class CustomAuthController extends Controller
             Session::pull('login');
             return redirect('login');
         }
+    } 
+    public function savetask(Request $request)
+{
+    $request->validate([
+        'task' => 'required',
+        'description' => 'required',
+        'status' => 'required',
+        'due_date' => 'required|date',
+    ]);
+
+    $task = new Task();
+    $task->name = $request->input('task');
+    $task->description = $request->input('description');
+    $task->status = $request->input('status');
+    $task->due_date = $request->input('due_date'); 
+    $res = $task->save();
+
+    if ($res) {
+        return back()->with('success', 'Task added successfully');
+    } else {
+        return back()->with('fail', 'Something wrong');
     }
 }
+    public function tasklist(){
+     $tasklist = task::all();
+
+    return view('tasklist',compact('tasklist'));
+    }
+    public function delete_task($id)
+{
+    Task::destroy($id);
+
+    // Redirect or return a response as needed
+    return redirect()->back()->with('success', 'Task deleted successfully');
+}
+public function updateStatus($id)
+{
+    $task = Task::find($id);
+    if (!$task) {
+        return redirect('/tasklist')->with('error', 'Task not found');
+    }
+    $task->status = 'Approved';
+    $task->save();
+    return redirect('/tasklist')->with('success', 'Task status updated to Approved');
+}
+}
+
+
+
+
+
+
+
+
+
 

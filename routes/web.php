@@ -22,5 +22,7 @@ Route::post('/register-user', [CustomAuthController::class, 'registerUser'])->na
 Route::post('/login-user', [CustomAuthController::class, 'loginUser'])->name('login-user');
 Route::get('/dashboard',[CustomAuthController::class, 'dashboard'])->middleware('isLoggedIn');
 Route::get('/logout',[CustomAuthController::class, 'logout']);
-
-
+Route::post('/save-task', [CustomAuthController::class, 'saveTask'])->name('save-task');
+Route::get('/tasklist' , [CustomAuthController::class, 'tasklist']);
+Route::get('delete_task/{id}', [CustomAuthController::class, 'delete_task']);
+Route::put('/tasks/{id}/update-status', [CustomAuthController::class, 'updateStatus'])->name('tasks.updateStatus');
